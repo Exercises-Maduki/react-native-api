@@ -1,13 +1,33 @@
+import { fetchGetCarData } from "../../api/getCars";
+import { CarModel } from "./props";
 
-// fazer uma solicitação para api para obter dados do carro
-export const loadCarData = async() => {
-    console.log('Loading Car Data');
-}
+//fazer uma solicitação pra api
+export const loadCarData = async (
+  id: number,
+  setCarData: React.Dispatch<React.SetStateAction<CarModel | null>>
+) => {
+  try {
+    //implemento regras de negocio
+    await fetchGetCarData(id, setCarData);
+  } catch (error) {
+    console.error("Erro ao buscar dados da api:", error);
+  }
+};
 
-export const handlePreviousItem = async() => {
-    console.log('Previous Item');
-}
+export const handlePreviousItem = async (
+  carData: CarModel | null,
+  setCarData: React.Dispatch<React.SetStateAction<CarModel | null>>
+) => {
+  if (carData && carData.id > 1) {
+    await fetchGetCarData(carData.id - 1, setCarData);
+  }
+};
 
-export const handleNextItem = async() => {
-    console.log('Next Item');
-}
+export const handleNextItem = async (
+  carData: CarModel | null,
+  setCarData: React.Dispatch<React.SetStateAction<CarModel | null>>
+) => {
+  if (carData && carData.id < 10) {
+    await fetchGetCarData(carData.id + 1, setCarData);
+  }
+};

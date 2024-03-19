@@ -7,10 +7,18 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
+  "image": "./assets/logo.png",
+  "resizeMode": "contain",
+  "backgroundColor": "#000000",
+  "imageStyle": {
+    "width": 100,
+    "height": 100
+  },
+  "statusBar": {
+    "style": "light-content",
+    "backgroundColor": "#000000"
+  }
+}
     "assetBundlePatterns": [
       "**/*"
     ],
